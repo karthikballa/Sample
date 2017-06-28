@@ -1,0 +1,55 @@
+﻿@model IEnumerable<OnlineShopping.Models.DB.Sp_Uorder_Details_Result>
+
+@{
+    ViewBag.Title = "UOrderlist";
+}
+
+<h2>UOrderlist</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quality)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelitem=>item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDescription)
+        </td>
+        <td>
+            <img src="@Url.Content("~/Images/"+item.OrderImage)"style="width:100px;height:100px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quality)
+        </td>
+        <td>
+            <input type="button" value="Buy" class="btn btn-success" onclick="location.href='@Url.Action("create", "CardDetails")'">
+        </td>
+        <td>
+          
+            <input type="button" value="AddtoKart" class="btn btn-success" onclick="location.href='@Url.Action("Create","AddtoKart")" />
+        </td>
+    </tr>
+}
+
+</table>

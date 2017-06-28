@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineShoppingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Brands">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoriesID" Type="Int32" />
+    <Property Name="BrandName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Brandimage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Categories">
+    <Key>
+      <PropertyRef Name="CategoriesID" />
+    </Key>
+    <Property Name="CategoriesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoriesName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Categoriesimage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="ItemName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="itemimage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="OnlineShoppingEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Brands" EntityType="Self.tbl_Brands" />
+    <EntitySet Name="tbl_Categories" EntityType="Self.tbl_Categories" />
+    <EntitySet Name="tbl_Item" EntityType="Self.tbl_Item" />
+    <FunctionImport Name="Sp_Brands_Delete">
+      <Parameter Name="BrandID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Brands_Display" ReturnType="Collection(OnlineShoppingModel.Sp_Brands_Display_Result)">
+      <Parameter Name="BrandID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Brands_insert">
+      <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+      <Parameter Name="BrandName" Mode="In" Type="String" />
+      <Parameter Name="Brandimage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Brands_update">
+      <Parameter Name="BrandID" Mode="In" Type="Int32" />
+      <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+      <Parameter Name="BrandName" Mode="In" Type="String" />
+      <Parameter Name="Brandimage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Categories_Delete">
+      <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Categories_Display" ReturnType="Collection(OnlineShoppingModel.Sp_Categories_Display_Result)">
+      <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Categories_insert">
+      <Parameter Name="CategoriesName" Mode="In" Type="String" />
+      <Parameter Name="Categoriesimage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Categories_update">
+      <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+      <Parameter Name="CategoriesName" Mode="In" Type="String" />
+      <Parameter Name="Categoriesimage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Item_Delete">
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Item_Display" ReturnType="Collection(OnlineShoppingModel.Sp_Item_Display_Result)">
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Item_insert">
+      <Parameter Name="BrandID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemName" Mode="In" Type="String" />
+      <Parameter Name="Itemimage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Item_update">
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+      <Parameter Name="BrandID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemName" Mode="In" Type="String" />
+      <Parameter Name="Itemimage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Item_Details" ReturnType="Collection(OnlineShoppingModel.Sp_Item_Details_Result)" />
+    <FunctionImport Name="Sp_categories_Details" ReturnType="Collection(OnlineShoppingModel.Sp_categories_Details_Result)" />
+    <FunctionImport Name="Sp_Brands_Details" ReturnType="Collection(OnlineShoppingModel.Sp_Brands_Details_Result)" />
+    <EntitySet Name="tbl_Order" EntityType="OnlineShoppingModel.tbl_Order" />
+    <FunctionImport Name="Sp_insert_order">
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDescription" Mode="In" Type="String" />
+      <Parameter Name="OrderImage" Mode="In" Type="String" />
+      <Parameter Name="Price" Mode="In" Type="Int32" />
+      <Parameter Name="Quality" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_order_Delete">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_order_Details" ReturnType="Collection(OnlineShoppingModel.Sp_order_Details_Result)" />
+    <FunctionImport Name="Sp_order_Display" ReturnType="Collection(OnlineShoppingModel.Sp_order_Display_Result)">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_order_Update">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDescription" Mode="In" Type="String" />
+      <Parameter Name="OrderImage" Mode="In" Type="String" />
+      <Parameter Name="Price" Mode="In" Type="Int32" />
+      <Parameter Name="Quality" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_order_insert">
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDescription" Mode="In" Type="String" />
+      <Parameter Name="OrderImage" Mode="In" Type="String" />
+      <Parameter Name="Price" Mode="In" Type="Int32" />
+      <Parameter Name="Quality" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_UBrands_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UBrands_Details_Result)">
+      <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_UItem_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UItem_Details_Result)">
+      <Parameter Name="BrandID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Uorder_Details" ReturnType="Collection(OnlineShoppingModel.Sp_Uorder_Details_Result)">
+      <Parameter Name="ItemID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_CardDetails" EntityType="OnlineShoppingModel.tbl_CardDetails" />
+    <FunctionImport Name="Sp_CardDetails_Insert">
+      <Parameter Name="LoginID" Mode="In" Type="String" />
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="CardNumber" Mode="In" Type="String" />
+      <Parameter Name="CardName" Mode="In" Type="String" />
+      <Parameter Name="Expirydate" Mode="In" Type="String" />
+      <Parameter Name="CVV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CardDetails_Details" ReturnType="Collection(OnlineShoppingModel.Sp_CardDetails_Details_Result)" />
+    <EntitySet Name="tbl_Kart" EntityType="OnlineShoppingModel.tbl_Kart" />
+    <FunctionImport Name="Sp_Kart_insert">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Kart_Details" ReturnType="Collection(OnlineShoppingModel.Sp_Kart_Details_Result)" />
+    <EntitySet Name="tbl_City" EntityType="OnlineShoppingModel.tbl_City" />
+    <EntitySet Name="tbl_Countrys" EntityType="OnlineShoppingModel.tbl_Countrys" />
+    <EntitySet Name="tbl_State" EntityType="OnlineShoppingModel.tbl_State" />
+    <EntitySet Name="tbl_User_Registration" EntityType="OnlineShoppingModel.tbl_User_Registration" />
+    <FunctionImport Name="Sp_Userregistration_Insert">
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="EmailId" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="MobileNumber" Mode="In" Type="String" />
+      <Parameter Name="CountryName" Mode="In" Type="String" />
+      <Parameter Name="StateName" Mode="In" Type="String" />
+      <Parameter Name="CityName" Mode="In" Type="String" />
+      <Parameter Name="Address1" Mode="In" Type="String" />
+      <Parameter Name="Address2" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Userregistration_Update">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="EmailId" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="MobileNumber" Mode="In" Type="String" />
+      <Parameter Name="CountryName" Mode="In" Type="String" />
+      <Parameter Name="StateName" Mode="In" Type="String" />
+      <Parameter Name="CityName" Mode="In" Type="String" />
+      <Parameter Name="Address1" Mode="In" Type="String" />
+      <Parameter Name="Address2" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_UserRegistration_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UserRegistration_Details_Result)" />
+    <FunctionImport Name="Sp_UserRegistration_Display" ReturnType="Collection(OnlineShoppingModel.Sp_UserRegistration_Display_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Sp_Brands_Display_Result">
+    <Property Type="Int32" Name="BrandID" Nullable="false" />
+    <Property Type="Int32" Name="CategoriesID" Nullable="true" />
+    <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Brandimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_Categories_Display_Result">
+    <Property Type="Int32" Name="CategoriesID" Nullable="false" />
+    <Property Type="String" Name="CategoriesName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Categoriesimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_Item_Display_Result">
+    <Property Type="Int32" Name="ItemID" Nullable="false" />
+    <Property Type="Int32" Name="BrandID" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="itemimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_Item_Details_Result">
+    <Property Type="Int32" Name="ItemID" Nullable="false" />
+    <Property Type="Int32" Name="BrandID" Nullable="false" />
+    <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="itemimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_categories_Details_Result">
+    <Property Type="Int32" Name="CategoriesID" Nullable="false" />
+    <Property Type="String" Name="CategoriesName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Categoriesimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_Brands_Details_Result">
+    <Property Type="Int32" Name="BrandID" Nullable="false" />
+    <Property Type="Int32" Name="CategoriesID" Nullable="false" />
+    <Property Type="String" Name="CategoriesName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Brandimage" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbl_Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="OrderDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="OrderImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Quality" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="Sp_order_Details_Result">
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="Int32" Name="ItemID" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="OrderDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="OrderImage" Nullable="true" />
+    <Property Type="Int32" Name="Price" Nullable="true" />
+    <Property Type="String" Name="Quality" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="Sp_order_Display_Result">
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="Int32" Name="ItemID" Nullable="true" />
+    <Property Type="String" Name="OrderDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="OrderImage" Nullable="true" />
+    <Property Type="Int32" Name="Price" Nullable="true" />
+    <Property Type="String" Name="Quality" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="Sp_UBrands_Details_Result">
+    <Property Type="Int32" Name="BrandID" Nullable="false" />
+    <Property Type="Int32" Name="CategoriesID" Nullable="false" />
+    <Property Type="String" Name="CategoriesName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Brandimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_UItem_Details_Result">
+    <Property Type="Int32" Name="ItemID" Nullable="false" />
+    <Property Type="Int32" Name="BrandID" Nullable="false" />
+    <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="itemimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_Uorder_Details_Result">
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="Int32" Name="ItemID" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="OrderDescription" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="OrderImage" Nullable="true" />
+    <Property Type="Int32" Name="Price" Nullable="true" />
+    <Property Type="String" Name="Quality" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="tbl_CardDetails">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Name="CardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CardName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Expirydate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CVV" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="Sp_CardDetails_Details_Result">
+    <Property Type="Int32" Name="CardID" Nullable="false" />
+    <Property Type="String" Name="LoginID" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="CardNumber" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="CardName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Expirydate" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="CVV" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="tbl_Kart">
+    <Key>
+      <PropertyRef Name="KartID" />
+    </Key>
+    <Property Name="KartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Sp_Kart_Details_Result">
+    <Property Type="Int32" Name="KartID" Nullable="false" />
+    <Property Type="Int32" Name="OrderID" Nullable="true" />
+    <Property Type="Int32" Name="UserID" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbl_City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StateID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_Countrys">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CountryID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_User_Registration">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="Sp_UserRegistration_Details_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmailID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address1" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address2" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_UserRegistration_Display_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmailID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address1" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address2" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+  </ComplexType>
+</Schema>

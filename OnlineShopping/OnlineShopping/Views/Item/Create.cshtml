@@ -1,0 +1,85 @@
+﻿@model OnlineShopping.Models.DB.tbl_Item
+
+@{
+    ViewBag.Title = " Item Create";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<h2>Create</h2>
+<script>
+    $(document).ready(function () {
+        $("#Categories").change(function () {
+            var CategoriesID =$('#Categories').val();
+            $("#BrandID").empty();
+
+            $.ajax({
+                url: '/Item/Brand',
+                type: 'get',
+                datatype: JSON,
+                data: { CategoriesID: CategoriesID },
+                success: function (listname) {
+                    $('#BrandID').append("<option value='0'>Please Enter</option>");
+                    $.each(listname,function(index,value){
+                        $('#BrandID').append('<option value="' + value.BrandID + '">' + value.BrandName + '</option>');
+                    })
+                }
+            })
+        })
+    })
+</script>
+@using (Html.BeginForm("Create", "Item", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Create_Item</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("CategoriesName", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+              @Html.DropDownList("Categories", ViewBag.Categorieslist as SelectList, "Please Enter", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("BrandName", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("Brands", new SelectList(ViewBag.Brands, "BrandID", "BrandName"), new { @class = "form-control" })*@
+                @*@Html.DropDownList("Brands", (IEnumerable<SelectListItem>)ViewBag.Brands, String.Empty, new { @class = "extra-class" })*@
+              @Html.DropDownList("BrandID", new SelectList(string.Empty, "BrandID", "BrandName"), "Please enter Brand", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ItemName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ItemName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ItemName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.itemimage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="image" value="brower" accept=".jpg,.jpeg,.png" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "List")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

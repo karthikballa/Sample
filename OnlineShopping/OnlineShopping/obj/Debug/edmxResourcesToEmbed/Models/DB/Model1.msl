@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OnlineShoppingModelStoreContainer" CdmEntityContainer="OnlineShoppingEntities2">
+    <EntitySetMapping Name="tbl_Brands">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_Brands">
+        <MappingFragment StoreEntitySet="tbl_Brands">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Brandimage" ColumnName="Brandimage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Categories">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_Categories">
+        <MappingFragment StoreEntitySet="tbl_Categories">
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="CategoriesName" ColumnName="CategoriesName" />
+          <ScalarProperty Name="Categoriesimage" ColumnName="Categoriesimage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Item">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_Item">
+        <MappingFragment StoreEntitySet="tbl_Item">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="itemimage" ColumnName="itemimage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Brands_Delete" FunctionName="OnlineShoppingModel.Store.Sp_Brands_Delete" />
+    <FunctionImportMapping FunctionImportName="Sp_Brands_Display" FunctionName="OnlineShoppingModel.Store.Sp_Brands_Display">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Brands_Display_Result">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Brandimage" ColumnName="Brandimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Brands_insert" FunctionName="OnlineShoppingModel.Store.Sp_Brands_insert" />
+    <FunctionImportMapping FunctionImportName="Sp_Brands_update" FunctionName="OnlineShoppingModel.Store.Sp_Brands_update" />
+    <FunctionImportMapping FunctionImportName="Sp_Categories_Delete" FunctionName="OnlineShoppingModel.Store.Sp_Categories_Delete" />
+    <FunctionImportMapping FunctionImportName="Sp_Categories_Display" FunctionName="OnlineShoppingModel.Store.Sp_Categories_Display">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Categories_Display_Result">
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="CategoriesName" ColumnName="CategoriesName" />
+          <ScalarProperty Name="Categoriesimage" ColumnName="Categoriesimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Categories_insert" FunctionName="OnlineShoppingModel.Store.Sp_Categories_insert" />
+    <FunctionImportMapping FunctionImportName="Sp_Categories_update" FunctionName="OnlineShoppingModel.Store.Sp_Categories_update" />
+    <FunctionImportMapping FunctionImportName="Sp_Item_Delete" FunctionName="OnlineShoppingModel.Store.Sp_Item_Delete" />
+    <FunctionImportMapping FunctionImportName="Sp_Item_Display" FunctionName="OnlineShoppingModel.Store.Sp_Item_Display">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Item_Display_Result">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="itemimage" ColumnName="itemimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Item_insert" FunctionName="OnlineShoppingModel.Store.Sp_Item_insert" />
+    <FunctionImportMapping FunctionImportName="Sp_Item_update" FunctionName="OnlineShoppingModel.Store.Sp_Item_update" />
+    <FunctionImportMapping FunctionImportName="Sp_Item_Details" FunctionName="OnlineShoppingModel.Store.Sp_Item_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Item_Details_Result">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="itemimage" ColumnName="itemimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_categories_Details" FunctionName="OnlineShoppingModel.Store.Sp_categories_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_categories_Details_Result">
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="CategoriesName" ColumnName="CategoriesName" />
+          <ScalarProperty Name="Categoriesimage" ColumnName="Categoriesimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Brands_Details" FunctionName="OnlineShoppingModel.Store.Sp_Brands_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Brands_Details_Result">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="CategoriesName" ColumnName="CategoriesName" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Brandimage" ColumnName="Brandimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_Order">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_Order">
+        <MappingFragment StoreEntitySet="tbl_Order">
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OrderImage" ColumnName="OrderImage" />
+          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_insert_order" FunctionName="OnlineShoppingModel.Store.Sp_insert_order" />
+    <FunctionImportMapping FunctionImportName="Sp_order_Delete" FunctionName="OnlineShoppingModel.Store.Sp_order_Delete" />
+    <FunctionImportMapping FunctionImportName="Sp_order_Details" FunctionName="OnlineShoppingModel.Store.Sp_order_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_order_Details_Result">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+          <ScalarProperty Name="OrderImage" ColumnName="OrderImage" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_order_Display" FunctionName="OnlineShoppingModel.Store.Sp_order_Display">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_order_Display_Result">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+          <ScalarProperty Name="OrderImage" ColumnName="OrderImage" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_order_Update" FunctionName="OnlineShoppingModel.Store.Sp_order_Update" />
+    <FunctionImportMapping FunctionImportName="Sp_order_insert" FunctionName="OnlineShoppingModel.Store.Sp_order_insert" />
+    <FunctionImportMapping FunctionImportName="Sp_UBrands_Details" FunctionName="OnlineShoppingModel.Store.Sp_UBrands_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_UBrands_Details_Result">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="CategoriesName" ColumnName="CategoriesName" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Brandimage" ColumnName="Brandimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_UItem_Details" FunctionName="OnlineShoppingModel.Store.Sp_UItem_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_UItem_Details_Result">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="itemimage" ColumnName="itemimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Uorder_Details" FunctionName="OnlineShoppingModel.Store.Sp_Uorder_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Uorder_Details_Result">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+          <ScalarProperty Name="OrderImage" ColumnName="OrderImage" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_CardDetails">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_CardDetails">
+        <MappingFragment StoreEntitySet="tbl_CardDetails">
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="Expirydate" ColumnName="Expirydate" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_CardDetails_Insert" FunctionName="OnlineShoppingModel.Store.Sp_CardDetails_Insert" />
+    <FunctionImportMapping FunctionImportName="Sp_CardDetails_Details" FunctionName="OnlineShoppingModel.Store.Sp_CardDetails_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_CardDetails_Details_Result">
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="Expirydate" ColumnName="Expirydate" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_Kart">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_Kart">
+        <MappingFragment StoreEntitySet="tbl_Kart">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="KartID" ColumnName="KartID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Kart_insert" FunctionName="OnlineShoppingModel.Store.Sp_Kart_insert" />
+    <FunctionImportMapping FunctionImportName="Sp_Kart_Details" FunctionName="OnlineShoppingModel.Store.Sp_Kart_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Kart_Details_Result">
+          <ScalarProperty Name="KartID" ColumnName="KartID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_City">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_City">
+        <MappingFragment StoreEntitySet="tbl_City">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Countrys">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_Countrys">
+        <MappingFragment StoreEntitySet="tbl_Countrys">
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_State">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_State">
+        <MappingFragment StoreEntitySet="tbl_State">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_User_Registration">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.tbl_User_Registration">
+        <MappingFragment StoreEntitySet="tbl_User_Registration">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Userregistration_Insert" FunctionName="OnlineShoppingModel.Store.Sp_Userregistration_Insert" />
+    <FunctionImportMapping FunctionImportName="Sp_Userregistration_Update" FunctionName="OnlineShoppingModel.Store.Sp_Userregistration_Update" />
+    <FunctionImportMapping FunctionImportName="Sp_UserRegistration_Details" FunctionName="OnlineShoppingModel.Store.Sp_UserRegistration_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_UserRegistration_Details_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_UserRegistration_Display" FunctionName="OnlineShoppingModel.Store.Sp_UserRegistration_Display">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_UserRegistration_Display_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

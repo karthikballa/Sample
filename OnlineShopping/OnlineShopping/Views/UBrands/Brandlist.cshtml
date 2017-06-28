@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OnlineShopping.Models.DB.Sp_UBrands_Details_Result>
+
+@{
+    ViewBag.Title = "Brandlist";
+}
+
+<h2>Brandlist</h2>
+<div>
+    <input type="button" value="Bact to Categories" class="btn btn-success" onclick="location.href"@Url.Action("Categorieslist", "UCategories")>
+</div>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CategoriesName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brandimage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CategoriesName)
+        </td>*@
+        <td>
+            <a href="@Url.Action("UItemlist", "UItem", new { id=item.BrandID})">@item.BrandName</a>
+        </td>
+        <td>
+            <img src="@Url.Content("/Images/"+item.Brandimage)" style="width:100px;height:100px" />
+        </td>
+        <th></th>
+    </tr>
+}
+</table>
+

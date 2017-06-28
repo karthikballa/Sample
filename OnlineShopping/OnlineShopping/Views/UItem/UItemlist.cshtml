@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OnlineShopping.Models.DB.Sp_UItem_Details_Result>
+
+@{
+    ViewBag.Title = "UItemlist";
+}
+
+<h2>UItemlist</h2>
+<div>
+    @Html.ActionLink("Go to Brands","Brandlist/id","UBrands")
+</div>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemimage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.BrandName)
+        </td>*@
+        <td>
+            <a href="@Url.Action("UOrderlist", "UOrder", new {id=item.ItemID})">@item.ItemName</a>
+        </td>
+        <td>
+          <img src="@Url.Content("~/Images/"+item.itemimage)" style="width:100px;height:100px" />
+        </td>
+     
+    </tr>
+}
+
+</table>

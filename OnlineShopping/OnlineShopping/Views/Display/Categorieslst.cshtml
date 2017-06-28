@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>This is the list of categories</h2>
+<div>
+    @Html.Label("Categorieslist", htmlAttributes: new { @class = "control-label col-md-2" })
+</div>
+
+<div class="table-bordered">
+    @Html.ActionLink("Categories", "Categorieslist", "UCategories")
+</div>

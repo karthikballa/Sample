@@ -1,0 +1,49 @@
+﻿@model IEnumerable<OnlineShopping.Models.DB.Sp_categories_Details_Result>
+
+@{
+    ViewBag.Title = "List Of Categories";
+}
+
+<h2>List Of Categories</h2>
+
+<p>
+    @Html.ActionLink("Create New Category", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("  S.No")
+        </th>
+        <th>
+            @Html.DisplayName("CategoriesName")
+        </th>
+        <th>
+            @Html.DisplayName("Category Logo")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoriesID)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoriesName)
+            </td>
+            <td>
+
+                <img src="@Url.Content("~/Images/"+item.Categoriesimage)" style=" width:100px; height:100px;" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CategoriesID}, new {@class="btn btn-success" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CategoriesID }, new { @class = "btn btn-default" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoriesID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

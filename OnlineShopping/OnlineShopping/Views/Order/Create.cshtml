@@ -1,0 +1,131 @@
+﻿@model OnlineShopping.Models.DB.tbl_Order
+
+@{
+    ViewBag.Title = "Create";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+
+<h2> Order Create</h2>
+<script>
+    $(document).ready(function () {
+        $("#Categories").change(function () {
+            var CategoriesID = $('#Categories').val();
+            $("#BrandID").empty();
+
+            $.ajax({
+                url: '/Item/Brand',
+                type: 'get',
+                datatype: JSON,
+                data: { CategoriesID: CategoriesID },
+                success: function (listname) {
+                    $('#BrandID').append("<option value='0'>Please Enter</option>");
+                    $.each(listname, function (index, value) {
+                        $('#BrandID').append('<option value="' + value.BrandID + '">' + value.BrandName + '</option>');
+                    })
+                }
+            })
+        })
+    })
+
+    $(document).ready(function () {
+        $("#BrandID").change(function () {
+            var BrandID = $('#BrandID').val();
+            $("#ItemID").empty();
+
+            $.ajax({
+                url: '/Order/Item',
+                type: 'get',
+                datatype: JSON,
+                data: { BrandID: BrandID },
+                success: function (listnames) {
+                    $('#ItemID').append('<option value=0>please enter item</option>"');
+                    $.each(listnames, function (idex, value) {
+                        $('#ItemID').append('<option value="' + value.ItemID + '">' + value.ItemName + '<option>');
+                    })
+                }
+            })
+        })
+    })
+</script>
+
+
+@using(Html.BeginForm("Create","Order",FormMethod.Post,new {enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>tbl_Order</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.HiddenFor(model => model.OrderID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.OrderID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OrderID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Categories Name" , new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Categories", ViewBag.Categoriess as SelectList,"Please Select Categories", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Brand Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("BrandID", new SelectList(string.Empty, "BrandID", "BrandName"), "Please select Brand", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("ItemID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ItemID", new SelectList(string.Empty, "ItemID", "ItemName"), "Please Select Brand", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OrderDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OrderDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderImage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="image" id="Brower" accept=".jpg,.jpeg,.png" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quality, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quality, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quality, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Order List", "List")
+</div>
