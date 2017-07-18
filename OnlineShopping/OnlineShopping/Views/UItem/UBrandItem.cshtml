@@ -1,0 +1,43 @@
+﻿@model IEnumerable<OnlineShopping.Models.DB.Sp_BItem_Details_Result>
+
+@{
+    ViewBag.Title = "UBrandItem";
+}
+
+<h2>UBrandItem</h2>
+@foreach (var item in Model) { 
+
+    <input type="button" value="Bact to Brands" class="btn btn-success" onclick="location.href='@Url.Action("CategoryBrand", "UBrands", new { id = item.BrandID })'">
+    break;
+}
+
+@*@foreach (var item in Model)
+{
+
+    <input type="button" value="Bact to Brands" class="btn btn-success" onclick="location.href='@Url.Action("Brandlist", "UBrands", new { id = item.BrandID })'">
+    break;
+}*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemimage)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("UOrderlist", "UOrder", new { id = item.ItemID })">@item.ItemName</a>
+            </td>
+            <td>
+                <img src="@Url.Content("~/Images/"+item.itemimage)" style="width:100px;height:100px" />
+            </td>
+
+        </tr>
+    }
+
+</table>

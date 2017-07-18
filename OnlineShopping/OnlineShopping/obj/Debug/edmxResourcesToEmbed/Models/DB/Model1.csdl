@@ -113,7 +113,7 @@
       <Parameter Name="Quality" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Sp_UBrands_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UBrands_Details_Result)">
-      <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+      <Parameter Name="brandId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Sp_UItem_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UItem_Details_Result)">
       <Parameter Name="BrandID" Mode="In" Type="Int32" />
@@ -175,6 +175,20 @@
     </FunctionImport>
     <FunctionImport Name="Sp_UserRegistration_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UserRegistration_Details_Result)" />
     <FunctionImport Name="Sp_UserRegistration_Display" ReturnType="Collection(OnlineShoppingModel.Sp_UserRegistration_Display_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_UserRegistraion_Delete">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_UCtgryBrand_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UCtgryBrand_Details_Result)">
+      <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BItem_Details" ReturnType="Collection(OnlineShoppingModel.Sp_BItem_Details_Result)">
+      <Parameter Name="BrandID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Kart_Createtable" ReturnType="Collection(OnlineShoppingModel.Sp_Kart_Createtable_Result)">
+      <Parameter Name="KartID" Mode="In" Type="Int32" />
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
       <Parameter Name="UserID" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
@@ -374,5 +388,24 @@
     <Property Type="String" Name="Address1" Nullable="true" MaxLength="500" />
     <Property Type="String" Name="Address2" Nullable="true" MaxLength="500" />
     <Property Type="Boolean" Name="IsActive" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_UCtgryBrand_Details_Result">
+    <Property Type="Int32" Name="BrandID" Nullable="false" />
+    <Property Type="Int32" Name="CategoriesID" Nullable="false" />
+    <Property Type="String" Name="CategoriesName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Brandimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_BItem_Details_Result">
+    <Property Type="Int32" Name="ItemID" Nullable="false" />
+    <Property Type="Int32" Name="BrandID" Nullable="false" />
+    <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="itemimage" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_Kart_Createtable_Result">
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="KartID" Nullable="false" />
   </ComplexType>
 </Schema>

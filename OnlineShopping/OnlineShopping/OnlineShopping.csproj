@@ -126,6 +126,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Validations.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\Sp_BItem_Details_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\Sp_Brands_Details_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -182,6 +186,9 @@
     <Compile Include="Models\DB\Sp_Item_Display_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\Sp_Kart_Createtable_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\Sp_Kart_Details_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -192,6 +199,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\Sp_UBrands_Details_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Sp_UCtgryBrand_Details_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\Sp_UItem_Details_Result.cs">
@@ -276,6 +286,9 @@
     <Content Include="Views\UserRegistration\List.cshtml" />
     <Content Include="Views\UserRegistration\Edit.cshtml" />
     <Content Include="Views\LoginPage\Login.cshtml" />
+    <Content Include="Views\UserRegistration\Delete.cshtml" />
+    <Content Include="Views\UBrands\CategoryBrand.cshtml" />
+    <Content Include="Views\UItem\UBrandItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

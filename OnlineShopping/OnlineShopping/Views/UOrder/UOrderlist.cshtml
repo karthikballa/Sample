@@ -4,23 +4,31 @@
     ViewBag.Title = "UOrderlist";
 }
 
-<h2>UOrderlist</h2>
+<h2>Orderlist</h2>
+<div>
+    @foreach (var item in Model)
+    {
+            <input type="button" value="Bact to items" class=" btn btn-success" onclick="location.href='@Url.Action("UItemlist", "UItem", new { id = item.ItemID })'"> 
+        break;
+    }
+</div>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ItemName)
+            @Html.DisplayName("ItemName")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderDescription)
+            @Html.DisplayName("OrderDescription")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderImage)
+            @Html.DisplayName("OrderImage")         
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayName("Price")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quality)
+            @Html.DisplayName("Quality")
         </th>
         <th></th>
     </tr>
@@ -43,11 +51,10 @@
             @Html.DisplayFor(modelItem => item.Quality)
         </td>
         <td>
-            <input type="button" value="Buy" class="btn btn-success" onclick="location.href='@Url.Action("create", "CardDetails")'">
+            <input type="button" value="Check out" class="btn btn-success" onclick="location.href='@Url.Action("create", "CardDetails")'">
         </td>
         <td>
-          
-            <input type="button" value="AddtoKart" class="btn btn-success" onclick="location.href='@Url.Action("Create","AddtoKart")" />
+            <input type="button" value="AddtoKart" class="btn btn-success" onclick="location.href='@Url.Action("Create", "AddtoKart")'">
         </td>
     </tr>
 }

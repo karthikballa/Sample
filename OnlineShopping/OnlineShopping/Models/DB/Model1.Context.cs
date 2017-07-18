@@ -315,13 +315,13 @@ namespace OnlineShopping.Models.DB
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_order_insert", itemIDParameter, orderDescriptionParameter, orderImageParameter, priceParameter, qualityParameter);
         }
     
-        public virtual ObjectResult<Sp_UBrands_Details_Result> Sp_UBrands_Details(Nullable<int> categoriesID)
+        public virtual ObjectResult<Sp_UBrands_Details_Result> Sp_UBrands_Details(Nullable<int> brandId)
         {
-            var categoriesIDParameter = categoriesID.HasValue ?
-                new ObjectParameter("CategoriesID", categoriesID) :
-                new ObjectParameter("CategoriesID", typeof(int));
+            var brandIdParameter = brandId.HasValue ?
+                new ObjectParameter("brandId", brandId) :
+                new ObjectParameter("brandId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_UBrands_Details_Result>("Sp_UBrands_Details", categoriesIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_UBrands_Details_Result>("Sp_UBrands_Details", brandIdParameter);
         }
     
         public virtual ObjectResult<Sp_UItem_Details_Result> Sp_UItem_Details(Nullable<int> brandID)
@@ -528,6 +528,50 @@ namespace OnlineShopping.Models.DB
                 new ObjectParameter("UserID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_UserRegistration_Display_Result>("Sp_UserRegistration_Display", userIDParameter);
+        }
+    
+        public virtual int Sp_UserRegistraion_Delete(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_UserRegistraion_Delete", userIDParameter);
+        }
+    
+        public virtual ObjectResult<Sp_UCtgryBrand_Details_Result> Sp_UCtgryBrand_Details(Nullable<int> categoriesID)
+        {
+            var categoriesIDParameter = categoriesID.HasValue ?
+                new ObjectParameter("CategoriesID", categoriesID) :
+                new ObjectParameter("CategoriesID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_UCtgryBrand_Details_Result>("Sp_UCtgryBrand_Details", categoriesIDParameter);
+        }
+    
+        public virtual ObjectResult<Sp_BItem_Details_Result> Sp_BItem_Details(Nullable<int> brandID)
+        {
+            var brandIDParameter = brandID.HasValue ?
+                new ObjectParameter("BrandID", brandID) :
+                new ObjectParameter("BrandID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_BItem_Details_Result>("Sp_BItem_Details", brandIDParameter);
+        }
+    
+        public virtual ObjectResult<Sp_Kart_Createtable_Result> Sp_Kart_Createtable(Nullable<int> kartID, Nullable<int> orderID, Nullable<int> userID)
+        {
+            var kartIDParameter = kartID.HasValue ?
+                new ObjectParameter("KartID", kartID) :
+                new ObjectParameter("KartID", typeof(int));
+    
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("OrderID", orderID) :
+                new ObjectParameter("OrderID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Kart_Createtable_Result>("Sp_Kart_Createtable", kartIDParameter, orderIDParameter, userIDParameter);
         }
     }
 }

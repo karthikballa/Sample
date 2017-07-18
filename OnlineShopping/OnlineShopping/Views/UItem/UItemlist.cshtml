@@ -4,15 +4,17 @@
     ViewBag.Title = "UItemlist";
 }
 
-<h2>UItemlist</h2>
+<h2>Itemlist</h2>
 <div>
-    @Html.ActionLink("Go to Brands","Brandlist/id","UBrands")
-</div>
+  @foreach(var item in Model)
+  { 
+
+            <input type="button" value="Bact to Brands" class="btn btn-success" onclick="location.href='@Url.Action("CategoryBrand", "UBrands", new { id = item.BrandID})'">
+      break;
+  }
+    </div>
 <table class="table">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.BrandName)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ItemName)
         </th>
@@ -22,13 +24,12 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model) 
+{
     <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.BrandName)
-        </td>*@
         <td>
-            <a href="@Url.Action("UOrderlist", "UOrder", new {id=item.ItemID})">@item.ItemName</a>
+            @*<a href="@Url.Action("UOrderlist","UOrder",new {id=item.ItemID})">@item.ItemName</a>*@
+            <a href="@Url.Action("UOrderlist", "UOrder", new { id = item.ItemID })">@item.ItemName</a>
         </td>
         <td>
           <img src="@Url.Content("~/Images/"+item.itemimage)" style="width:100px;height:100px" />

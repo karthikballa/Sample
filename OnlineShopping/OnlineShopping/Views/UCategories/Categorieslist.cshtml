@@ -20,7 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <a href="@Url.Action("Brandlist","UBrands",new{id=item.CategoriesID})">@item.CategoriesName</a>
+            <a href="@Url.Action("CategoryBrand", "UBrands", new { id = item.CategoriesID })">@item.CategoriesName</a>
         </td>
         <td>
             <img src="@Url.Content("~/Images/"+item.Categoriesimage)" style="width:100px; height:100px" />

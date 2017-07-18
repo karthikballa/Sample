@@ -105,6 +105,9 @@
           <Property Name="Address2" Type="varchar" MaxLength="500" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <Function Name="Sp_BItem_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BrandID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Sp_Brands_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BrandID" Type="int" Mode="In" />
         </Function>
@@ -174,6 +177,11 @@
           <Parameter Name="ItemName" Type="varchar" Mode="In" />
           <Parameter Name="Itemimage" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Sp_Kart_Createtable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KartID" Type="int" Mode="In" />
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Sp_Kart_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_Kart_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OrderID" Type="int" Mode="In" />
@@ -202,6 +210,9 @@
           <Parameter Name="Quality" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Sp_UBrands_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="brandId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_UCtgryBrand_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoriesID" Type="int" Mode="In" />
         </Function>
         <Function Name="Sp_UItem_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -209,6 +220,9 @@
         </Function>
         <Function Name="Sp_Uorder_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ItemID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_UserRegistraion_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
         </Function>
         <Function Name="Sp_UserRegistration_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_UserRegistration_Display" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -375,7 +389,7 @@
             <Parameter Name="Quality" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_UBrands_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UBrands_Details_Result)">
-          <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+          <Parameter Name="brandId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_UItem_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UItem_Details_Result)">
           <Parameter Name="BrandID" Mode="In" Type="Int32" />
@@ -438,6 +452,20 @@
           <FunctionImport Name="Sp_UserRegistration_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UserRegistration_Details_Result)" />
           <FunctionImport Name="Sp_UserRegistration_Display" ReturnType="Collection(OnlineShoppingModel.Sp_UserRegistration_Display_Result)">
           <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UserRegistraion_Delete">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UCtgryBrand_Details" ReturnType="Collection(OnlineShoppingModel.Sp_UCtgryBrand_Details_Result)">
+          <Parameter Name="CategoriesID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_BItem_Details" ReturnType="Collection(OnlineShoppingModel.Sp_BItem_Details_Result)">
+          <Parameter Name="BrandID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Kart_Createtable" ReturnType="Collection(OnlineShoppingModel.Sp_Kart_Createtable_Result)">
+            <Parameter Name="KartID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Sp_Brands_Display_Result">
@@ -636,6 +664,25 @@
           <Property Type="String" Name="Address1" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Address2" Nullable="true" MaxLength="500" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_UCtgryBrand_Details_Result">
+          <Property Type="Int32" Name="BrandID" Nullable="false" />
+          <Property Type="Int32" Name="CategoriesID" Nullable="false" />
+          <Property Type="String" Name="CategoriesName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Brandimage" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_BItem_Details_Result">
+          <Property Type="Int32" Name="ItemID" Nullable="false" />
+          <Property Type="Int32" Name="BrandID" Nullable="false" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="itemimage" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_Kart_Createtable_Result">
+          <Property Type="Int32" Name="OrderID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="KartID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -950,6 +997,38 @@
                 <ScalarProperty Name="Address1" ColumnName="Address1" />
                 <ScalarProperty Name="Address2" ColumnName="Address2" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_UserRegistraion_Delete" FunctionName="OnlineShoppingModel.Store.Sp_UserRegistraion_Delete" />
+          <FunctionImportMapping FunctionImportName="Sp_UCtgryBrand_Details" FunctionName="OnlineShoppingModel.Store.Sp_UCtgryBrand_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_UCtgryBrand_Details_Result">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+                <ScalarProperty Name="CategoriesName" ColumnName="CategoriesName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="Brandimage" ColumnName="Brandimage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_BItem_Details" FunctionName="OnlineShoppingModel.Store.Sp_BItem_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_BItem_Details_Result">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="itemimage" ColumnName="itemimage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Kart_Createtable" FunctionName="OnlineShoppingModel.Store.Sp_Kart_Createtable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Kart_Createtable_Result">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="KartID" ColumnName="KartID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

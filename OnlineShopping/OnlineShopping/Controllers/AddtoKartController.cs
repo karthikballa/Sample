@@ -24,23 +24,25 @@ namespace OnlineShopping.Controllers
         }
 
         // GET: AddtoKart/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AddtoKart/Create
         [HttpPost]
         public ActionResult Create(tbl_Kart obj)
         {
+               tbl_Order o = new tbl_Order();
+            List<tbl_Kart> UserInfo = db.tbl_Kart.Where(x => x.OrderID == obj.OrderID && x.UserID == obj.UserID).ToList();
+            db.Sp_Kart_insert(obj.OrderID, obj.UserID);
+            // TODO: Add insert logic here
+
+            return RedirectToAction("List");
+        }
+
+        // POST: AddtoKart/Create
+        public ActionResult Create()
+        {
             try
             {
-                db.Sp_Kart_insert(obj.OrderID, obj.UserID);
-                // TODO: Add insert logic here
-
-                return RedirectToAction("List");
+                return View();
             }
-            catch
+            catch 
             {
                 return View();
             }

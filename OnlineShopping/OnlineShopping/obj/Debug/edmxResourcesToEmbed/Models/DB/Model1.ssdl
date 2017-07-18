@@ -100,6 +100,9 @@
     <Property Name="Address2" Type="varchar" MaxLength="500" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
+  <Function Name="Sp_BItem_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BrandID" Type="int" Mode="In" />
+  </Function>
   <Function Name="Sp_Brands_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="BrandID" Type="int" Mode="In" />
   </Function>
@@ -169,6 +172,11 @@
     <Parameter Name="ItemName" Type="varchar" Mode="In" />
     <Parameter Name="Itemimage" Type="nvarchar(max)" Mode="In" />
   </Function>
+  <Function Name="Sp_Kart_Createtable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KartID" Type="int" Mode="In" />
+    <Parameter Name="OrderID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
   <Function Name="Sp_Kart_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Sp_Kart_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="OrderID" Type="int" Mode="In" />
@@ -197,6 +205,9 @@
     <Parameter Name="Quality" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Sp_UBrands_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="brandId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_UCtgryBrand_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoriesID" Type="int" Mode="In" />
   </Function>
   <Function Name="Sp_UItem_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -204,6 +215,9 @@
   </Function>
   <Function Name="Sp_Uorder_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ItemID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_UserRegistraion_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
   </Function>
   <Function Name="Sp_UserRegistration_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Sp_UserRegistration_Display" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

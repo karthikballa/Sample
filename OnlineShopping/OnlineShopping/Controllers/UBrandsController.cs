@@ -18,5 +18,12 @@ namespace OnlineShopping.Controllers
             IList<Sp_UBrands_Details_Result> list = db.Sp_UBrands_Details(id).ToList();
             return View(list);
         }
+
+        public ActionResult CategoryBrand(int id)
+        {
+
+            IList<Sp_UCtgryBrand_Details_Result> list = db.Sp_UCtgryBrand_Details(id).ToList();
+            return View(list);
+        }
     }
 }

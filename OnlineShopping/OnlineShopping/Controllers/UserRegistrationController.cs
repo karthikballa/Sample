@@ -56,6 +56,32 @@ namespace OnlineShopping.Controllers
                 return View();
             }
         }
+        public JsonResult State(string CountryName)
+        {
+            if (CountryName != string.Empty)
+            {
+                int BID = Convert.ToInt32(CountryName);
+                var getlist = db.tbl_State.Where(x => x.CountryID == BID).ToList();
+                return Json(getlist, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult City(string StateName)
+        {
+            if (StateName != string.Empty)
+            {
+                int Bid = Convert.ToInt32(StateName);
+                var getlist = db.tbl_City.Where(x => x.StateID == Bid).ToList();
+                return Json(getlist, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+        }
 
         // GET: UserRegistration/Edit/5
         public ActionResult Edit(int id)
@@ -94,6 +120,7 @@ namespace OnlineShopping.Controllers
         {
             try
             {
+                db.Sp_UserRegistraion_Delete(id).ToString();
                 // TODO: Add delete logic here
 
                 return RedirectToAction("List");

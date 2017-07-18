@@ -6,13 +6,14 @@
 
 <h2>Brandlist</h2>
 <div>
-    <input type="button" value="Bact to Categories" class="btn btn-success" onclick="location.href"@Url.Action("Categorieslist", "UCategories")>
-</div>
+    @foreach(var item in Model)
+    { 
+    
+        <input type="button" value="Bact to Categories" class="btn btn-success" onclick="location.href='@Url.Action("Categorieslist", "UCategories", new { id=item.BrandID})'">
+    }
+    </div>  
 <table class="table">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CategoriesName)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.BrandName)
         </th>
@@ -24,9 +25,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CategoriesName)
-        </td>*@
         <td>
             <a href="@Url.Action("UItemlist", "UItem", new { id=item.BrandID})">@item.BrandName</a>
         </td>

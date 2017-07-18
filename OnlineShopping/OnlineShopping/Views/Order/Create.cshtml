@@ -16,7 +16,7 @@
             $("#BrandID").empty();
 
             $.ajax({
-                url: '/Item/Brand',
+                url: '/Order/Brand',
                 type: 'get',
                 datatype: JSON,
                 data: { CategoriesID: CategoriesID },
@@ -81,7 +81,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("ItemID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("ItemName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ItemID", new SelectList(string.Empty, "ItemID", "ItemName"), "Please Select Brand", new { @class = "form-control" })
             </div>

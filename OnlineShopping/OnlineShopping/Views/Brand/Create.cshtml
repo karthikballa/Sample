@@ -18,10 +18,10 @@
         <div class="form-group">
             @Html.Label("Categories Names", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CategoriesID, @ViewBag.Categoriess as SelectList, "Select From", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.CategoriesID, @ViewBag.Categoriess as SelectList, "Select From"
+                , new { @class = "form-control" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.Label("BrandName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

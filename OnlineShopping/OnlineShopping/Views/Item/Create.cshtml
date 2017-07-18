@@ -47,8 +47,6 @@
         <div class="form-group">
             @Html.Label("BrandName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.DropDownList("Brands", new SelectList(ViewBag.Brands, "BrandID", "BrandName"), new { @class = "form-control" })*@
-                @*@Html.DropDownList("Brands", (IEnumerable<SelectListItem>)ViewBag.Brands, String.Empty, new { @class = "extra-class" })*@
               @Html.DropDownList("BrandID", new SelectList(string.Empty, "BrandID", "BrandName"), "Please enter Brand", new { @class = "form-control" })
             </div>
         </div>

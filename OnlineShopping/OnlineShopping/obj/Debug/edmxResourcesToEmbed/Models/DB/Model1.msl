@@ -311,5 +311,37 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_UserRegistraion_Delete" FunctionName="OnlineShoppingModel.Store.Sp_UserRegistraion_Delete" />
+    <FunctionImportMapping FunctionImportName="Sp_UCtgryBrand_Details" FunctionName="OnlineShoppingModel.Store.Sp_UCtgryBrand_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_UCtgryBrand_Details_Result">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="CategoriesName" ColumnName="CategoriesName" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Brandimage" ColumnName="Brandimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BItem_Details" FunctionName="OnlineShoppingModel.Store.Sp_BItem_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_BItem_Details_Result">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="itemimage" ColumnName="itemimage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Kart_Createtable" FunctionName="OnlineShoppingModel.Store.Sp_Kart_Createtable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineShoppingModel.Sp_Kart_Createtable_Result">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="KartID" ColumnName="KartID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

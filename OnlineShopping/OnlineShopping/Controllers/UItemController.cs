@@ -17,5 +17,11 @@ namespace OnlineShopping.Controllers
             IList<Sp_UItem_Details_Result> list = db.Sp_UItem_Details(id).ToList();
             return View(list);
         }
+        public ActionResult UBrandItem(int id)
+        {
+            IList<Sp_BItem_Details_Result> list = db.Sp_BItem_Details(id).ToList();
+            return View(list);
+        }
+
     }
 }
